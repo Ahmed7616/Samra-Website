@@ -13,11 +13,25 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = isAr ? "AR" : "EN";
 });
 
-document.getElementById("booking-form").addEventListener("submit", (e) => {
+const form = document.getElementById("booking-form");
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = e.target.name.value;
-  const phone = e.target.phone.value;
-  const date = e.target.date.value;
-  alert(`شكراً ${name}! تم إرسال طلب حجز موعد في ${date}. سيتواصل معك قريباً.`);
-  e.target.reset();
+
+  const name = form.name.value.trim();
+  const phone = form.phone.value.trim();
+  const date = form.date.value;
+
+  if (!name || !phone || !date) {
+    alert("يرجى ملء جميع الحقول.");
+    return;
+  }
+
+  const message = `أهلاً، اسمي ${name} وأرغب في حجز موعد بتاريخ ${date}. رقم تواصلي: ${phone}`;
+  const whatsappNumber = "966546793425";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
+  window.open(whatsappURL, "_blank");
+  form.reset();
 });
