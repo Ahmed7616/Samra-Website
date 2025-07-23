@@ -1,15 +1,19 @@
-const toggleBtn = document.getElementById('lang-toggle');
-const arabicEls = ['slogan-ar'];
-const englishEls = ['slogan-en'];
+const toggleBtn = document.getElementById("lang-toggle");
+const arabicEls = ["slogan-ar"];
+const englishEls = ["slogan-en"];
 
-toggleBtn.addEventListener('click', () => {
-  const isAr = toggleBtn.textContent === 'EN';
-  arabicEls.forEach(id => document.getElementById(id).classList.toggle('hidden', !isAr));
-  englishEls.forEach(id => document.getElementById(id).classList.toggle('hidden', isAr));
-  toggleBtn.textContent = isAr ? 'AR' : 'EN';
+toggleBtn.addEventListener("click", () => {
+  const isAr = toggleBtn.textContent === "EN";
+  arabicEls.forEach((id) =>
+    document.getElementById(id).classList.toggle("hidden", !isAr)
+  );
+  englishEls.forEach((id) =>
+    document.getElementById(id).classList.toggle("hidden", isAr)
+  );
+  toggleBtn.textContent = isAr ? "AR" : "EN";
 });
 
-document.getElementById('booking-form').addEventListener('submit', e => {
+document.getElementById("booking-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const name = e.target.name.value;
   const phone = e.target.phone.value;
