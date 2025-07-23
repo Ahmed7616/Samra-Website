@@ -13,6 +13,12 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = isAr ? "AR" : "EN";
 });
 
+function isValidSaudiNumber(phone) {
+  // رقم يبدأ بـ 0 وبعدها 9 أرقام (بالمجموع 10 أرقام)
+  const saudiRegex = /^0\d{9}$/;
+  return saudiRegex.test(phone);
+}
+
 const form = document.getElementById("booking-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -26,9 +32,16 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
+  if (!isValidSaudiNumber(phone)) {
+    alert("يرجى إدخال رقم هاتف سعودي صحيح يبدأ بالرقم 0 ويتكون من 10 أرقام.");
+    return;
+  }
+
+  // نحول الرقم الدولي من الشكل 0546793425 إلى 966546793425 قبل إرسال الواتساب
+  const internationalPhone = "966" + phone.slice(1);
+
   const message = `أهلاً، اسمي ${name} وأرغب في حجز موعد بتاريخ ${date}. رقم تواصلي: ${phone}`;
-  const whatsappNumber = "966546793425";
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  const whatsappURL = `https://wa.me/${internationalPhone}?text=${encodeURIComponent(
     message
   )}`;
 
