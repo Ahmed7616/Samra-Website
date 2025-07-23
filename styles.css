@@ -1,0 +1,8 @@
+* { margin: 0; padding: 0; box‑sizing: border-box; font-family: Arial, sans-serif; }
+body { background-color: #f4f4f4; color: #333; line-height: 1.6; padding: 10px; }
+header { display: flex; justify-content: space-between; align-items: center; background: #222; color: #fff; padding: 10px; }
+#lang-toggle { background: #555; color: #fff; border: none; padding: 5px 10px; cursor: pointer; }
+section { margin: 20px 0; background: #fff; padding: 15px; border-radius: 5px; }
+.images-placeholder, .social-placeholder { background: #ddd; height: 150px; display: flex; justify-content: center; align-items: center; color: #555; }
+.whatsapp-btn { display: inline-block; background: #25D366; color: #fff; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+.hidden { display: none; }
